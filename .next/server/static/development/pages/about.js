@@ -88,372 +88,10 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./components/Canvas.js":
-/*!******************************!*\
-  !*** ./components/Canvas.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/takashimac/Documents/Node.js/FEMForEveryone/femfront/components/Canvas.js";
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-class Canvas extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
-  componentDidUpdate() {
-    let rawCoordinates = this.props.data;
-    rawCoordinates = {
-      "geometries": [[rawCoordinates.x1, rawCoordinates.y1], [rawCoordinates.x2, rawCoordinates.y2], [rawCoordinates.x3, rawCoordinates.y3], [rawCoordinates.x4, rawCoordinates.y4]]
-    };
-    const coords = rawCoordinates.geometries;
-    const canvas = this.refs.canvas;
-    const ctx = canvas.getContext("2d");
-    ctx.font = "40px Courier black";
-    ctx.beginPath();
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, 1000, 1000);
-
-    for (let i = 0; i < coords.length; i++) {
-      ctx.lineTo(coords[i][0], coords[i][1]);
-    }
-
-    ctx.lineTo(coords[0][0], coords[0][1]);
-    ctx.stroke();
-  }
-
-  componentDidMount() {
-    let rawCoordinates = this.props.data;
-    rawCoordinates = {
-      "geometries": [[rawCoordinates.x1, rawCoordinates.y1], [rawCoordinates.x2, rawCoordinates.y2], [rawCoordinates.x3, rawCoordinates.y3], [rawCoordinates.x4, rawCoordinates.y4]]
-    };
-    const coords = rawCoordinates.geometries;
-    const canvas = this.refs.canvas;
-    const ctx = canvas.getContext("2d");
-    ctx.font = "40px Courier black";
-    ctx.beginPath();
-
-    for (let i = 0; i < coords.length; i++) {
-      ctx.lineTo(coords[i][0], coords[i][1]);
-    }
-
-    ctx.lineTo(coords[0][0], coords[0][1]);
-    ctx.stroke();
-    ctx.clearRect(0, 0, ctx.width, ctx.height);
-  }
-
-  render() {
-    return __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 53
-      },
-      __self: this
-    }, __jsx("canvas", {
-      ref: "canvas",
-      width: 1000,
-      height: 500,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 54
-      },
-      __self: this
-    }));
-  }
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Canvas);
-
-/***/ }),
-
-/***/ "./components/Forms.js":
-/*!*****************************!*\
-  !*** ./components/Forms.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-jsx/style */ "styled-jsx/style");
-/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Canvas__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Canvas */ "./components/Canvas.js");
-
-
-var _jsxFileName = "/Users/takashimac/Documents/Node.js/FEMForEveryone/femfront/components/Forms.js";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
-
-const axios = __webpack_require__(/*! axios */ "axios");
-
-
-
-class CoordinatesForm extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      x1: 100,
-      y1: 50,
-      x2: 600,
-      y2: 50,
-      x3: 600,
-      y3: 300,
-      x4: 100,
-      y4: 300
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_1___default()(event.target.value)
-    });
-    console.log('set new state!!!!!!!!!!!!!!');
-  }
-
-  handleSubmit(event) {
-    const postData = {
-      "geometries": [[this.state.x1, this.state.y1], [this.state.x2, this.state.y2], [this.state.x3, this.state.y3], [this.state.x4, this.state.y4]]
-    };
-    axios.post('http://localhost:4000/geometry', postData).then(function (res) {
-      const show = _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(res.data);
-
-      return {
-        show: show
-      };
-    }).catch(function (err) {
-      console.log(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(err));
-    });
-    event.preventDefault();
-  }
-
-  render() {
-    return __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 53
-      },
-      __self: this
-    }, __jsx(_Canvas__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      data: this.state,
-      onChange: this.handleChange,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 53
-      },
-      __self: this
-    }), __jsx("form", {
-      onSubmit: this.handleSubmit,
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 54
-      },
-      __self: this
-    }, __jsx("label", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 55
-      },
-      __self: this
-    }, "x1:", __jsx("input", {
-      type: "number",
-      name: "x1",
-      value: this.state.x1,
-      onChange: this.handleChange,
-      min: "0",
-      max: "1000",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 57
-      },
-      __self: this
-    })), __jsx("label", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 59
-      },
-      __self: this
-    }, "y1:", __jsx("input", {
-      type: "number",
-      name: "y1",
-      value: this.state.y1,
-      onChange: this.handleChange,
-      min: "0",
-      max: "1000",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 61
-      },
-      __self: this
-    })), __jsx("label", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 63
-      },
-      __self: this
-    }, "x2:", __jsx("input", {
-      type: "number",
-      name: "x2",
-      value: this.state.x2,
-      onChange: this.handleChange,
-      min: "0",
-      max: "1000",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 65
-      },
-      __self: this
-    })), __jsx("label", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 67
-      },
-      __self: this
-    }, "y2:", __jsx("input", {
-      type: "number",
-      name: "y2",
-      value: this.state.y2,
-      onChange: this.handleChange,
-      min: "0",
-      max: "1000",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 69
-      },
-      __self: this
-    })), __jsx("br", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 70
-      },
-      __self: this
-    }), __jsx("label", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 71
-      },
-      __self: this
-    }, "x3:", __jsx("input", {
-      type: "number",
-      name: "x3",
-      value: this.state.x3,
-      onChange: this.handleChange,
-      min: "0",
-      max: "1000",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 73
-      },
-      __self: this
-    })), __jsx("label", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 75
-      },
-      __self: this
-    }, "y3:", __jsx("input", {
-      type: "number",
-      name: "y3",
-      value: this.state.y3,
-      onChange: this.handleChange,
-      min: "0",
-      max: "1000",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 77
-      },
-      __self: this
-    })), __jsx("label", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 79
-      },
-      __self: this
-    }, "x4:", __jsx("input", {
-      type: "number",
-      name: "x4",
-      value: this.state.x4,
-      onChange: this.handleChange,
-      min: "0",
-      max: "1000",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 81
-      },
-      __self: this
-    })), __jsx("label", {
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 83
-      },
-      __self: this
-    }, "y4:", __jsx("input", {
-      type: "number",
-      name: "y4",
-      value: this.state.y4,
-      onChange: this.handleChange,
-      min: "0",
-      max: "1000",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 85
-      },
-      __self: this
-    })), __jsx("input", {
-      type: "submit",
-      value: "Submit",
-      className: "jsx-2073007079",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 88
-      },
-      __self: this
-    }), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_2___default.a, {
-      id: "2073007079",
-      __self: this
-    }, "label.jsx-2073007079{-webkit-text-decoration:none;text-decoration:none;color:blue;font-size:16px;margin:10px;}input[type=submit].jsx-2073007079{background-color:#4CAF50;border:none;color:white;padding:10px 10px;-webkit-text-decoration:none;text-decoration:none;margin:4px 2px;cursor:pointer;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy90YWthc2hpbWFjL0RvY3VtZW50cy9Ob2RlLmpzL0ZFTUZvckV2ZXJ5b25lL2ZlbWZyb250L2NvbXBvbmVudHMvRm9ybXMuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBd0ZvQixBQUdnQyxBQU9JLHlCQUNiLFlBQ0EsWUFDTSxDQVRQLFdBQ0ksTUFTTSxTQVJULFlBQ2QsNkJBUWlCLGVBQ0EsZUFDakIiLCJmaWxlIjoiL1VzZXJzL3Rha2FzaGltYWMvRG9jdW1lbnRzL05vZGUuanMvRkVNRm9yRXZlcnlvbmUvZmVtZnJvbnQvY29tcG9uZW50cy9Gb3Jtcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImNvbnN0IGF4aW9zID0gcmVxdWlyZSgnYXhpb3MnKTtcbmltcG9ydCBDYW52YXMgZnJvbSAnLi9DYW52YXMnO1xuXG5jbGFzcyBDb29yZGluYXRlc0Zvcm0gZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuICBjb25zdHJ1Y3Rvcihwcm9wcykge1xuICAgIHN1cGVyKHByb3BzKTtcbiAgICB0aGlzLnN0YXRlID0geyBcbiAgICAgIHgxOiAxMDAsXG4gICAgICB5MTogNTAsXG4gICAgICB4MjogNjAwLFxuICAgICAgeTI6IDUwLFxuICAgICAgeDM6IDYwMCxcbiAgICAgIHkzOiAzMDAsXG4gICAgICB4NDogMTAwLFxuICAgICAgeTQ6IDMwMCxcbiAgICAgfTtcbiAgICB0aGlzLmhhbmRsZUNoYW5nZSA9IHRoaXMuaGFuZGxlQ2hhbmdlLmJpbmQodGhpcyk7XG4gICAgdGhpcy5oYW5kbGVTdWJtaXQgPSB0aGlzLmhhbmRsZVN1Ym1pdC5iaW5kKHRoaXMpO1xuICB9XG5cblxuXG4gIGhhbmRsZUNoYW5nZShldmVudCkge1xuICAgIHRoaXMuc2V0U3RhdGUoeyBbZXZlbnQudGFyZ2V0Lm5hbWVdOiBwYXJzZUludChldmVudC50YXJnZXQudmFsdWUpIH0pO1xuICAgIGNvbnNvbGUubG9nKCdzZXQgbmV3IHN0YXRlISEhISEhISEhISEhISEnKVxufVxuXG4gIGhhbmRsZVN1Ym1pdChldmVudCkge1xuICAgIGNvbnN0IHBvc3REYXRhID0ge1xuICAgICAgXCJnZW9tZXRyaWVzXCI6IFtcbiAgICAgICAgW3RoaXMuc3RhdGUueDEsIHRoaXMuc3RhdGUueTFdLFxuICAgICAgICBbdGhpcy5zdGF0ZS54MiwgdGhpcy5zdGF0ZS55Ml0sXG4gICAgICAgIFt0aGlzLnN0YXRlLngzLCB0aGlzLnN0YXRlLnkzXSxcbiAgICAgICAgW3RoaXMuc3RhdGUueDQsIHRoaXMuc3RhdGUueTRdLFxuICAgICAgXVxuICAgIH07XG5cbiAgICBheGlvcy5wb3N0KCdodHRwOi8vbG9jYWxob3N0OjQwMDAvZ2VvbWV0cnknLCBwb3N0RGF0YSlcbiAgICAgIC50aGVuKGZ1bmN0aW9uIChyZXMpIHtcbiAgICAgICAgY29uc3Qgc2hvdyA9IEpTT04uc3RyaW5naWZ5KHJlcy5kYXRhKTtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICBzaG93OiBzaG93XG4gICAgICAgIH07XG4gICAgICB9KVxuICAgICAgLmNhdGNoKGZ1bmN0aW9uIChlcnIpIHtcbiAgICAgICAgY29uc29sZS5sb2coSlNPTi5zdHJpbmdpZnkoZXJyKSk7XG4gICAgICB9KTtcbiAgICBldmVudC5wcmV2ZW50RGVmYXVsdCgpO1xuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2PjxDYW52YXMgZGF0YT17dGhpcy5zdGF0ZX0gb25DaGFuZ2U9e3RoaXMuaGFuZGxlQ2hhbmdlfS8+XG4gICAgICA8Zm9ybSBvblN1Ym1pdD17dGhpcy5oYW5kbGVTdWJtaXR9PlxuICAgICAgICA8bGFiZWw+XG4gICAgICAgICAgeDE6XG4gICAgICAgICAgPGlucHV0IHR5cGU9XCJudW1iZXJcIiBuYW1lPVwieDFcIiB2YWx1ZT17dGhpcy5zdGF0ZS54MX0gb25DaGFuZ2U9e3RoaXMuaGFuZGxlQ2hhbmdlfSBtaW49XCIwXCIgbWF4PVwiMTAwMFwiIC8+XG4gICAgICAgIDwvbGFiZWw+XG4gICAgICAgIDxsYWJlbD5cbiAgICAgICAgICB5MTpcbiAgICAgICAgICA8aW5wdXQgdHlwZT1cIm51bWJlclwiIG5hbWU9XCJ5MVwiIHZhbHVlPXt0aGlzLnN0YXRlLnkxfSBvbkNoYW5nZT17dGhpcy5oYW5kbGVDaGFuZ2V9IG1pbj1cIjBcIiBtYXg9XCIxMDAwXCIgLz5cbiAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgPGxhYmVsPlxuICAgICAgICAgIHgyOlxuICAgICAgICAgIDxpbnB1dCB0eXBlPVwibnVtYmVyXCIgbmFtZT1cIngyXCIgdmFsdWU9e3RoaXMuc3RhdGUueDJ9IG9uQ2hhbmdlPXt0aGlzLmhhbmRsZUNoYW5nZX0gbWluPVwiMFwiIG1heD1cIjEwMDBcIiAvPlxuICAgICAgICA8L2xhYmVsPlxuICAgICAgICA8bGFiZWw+XG4gICAgICAgICAgeTI6XG4gICAgICAgICAgPGlucHV0IHR5cGU9XCJudW1iZXJcIiBuYW1lPVwieTJcIiB2YWx1ZT17dGhpcy5zdGF0ZS55Mn0gb25DaGFuZ2U9e3RoaXMuaGFuZGxlQ2hhbmdlfSBtaW49XCIwXCIgbWF4PVwiMTAwMFwiIC8+XG4gICAgICAgIDwvbGFiZWw+PGJyPjwvYnI+XG4gICAgICAgIDxsYWJlbD5cbiAgICAgICAgICB4MzpcbiAgICAgICAgICA8aW5wdXQgdHlwZT1cIm51bWJlclwiIG5hbWU9XCJ4M1wiIHZhbHVlPXt0aGlzLnN0YXRlLngzfSBvbkNoYW5nZT17dGhpcy5oYW5kbGVDaGFuZ2V9IG1pbj1cIjBcIiBtYXg9XCIxMDAwXCIgLz5cbiAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgPGxhYmVsPlxuICAgICAgICAgIHkzOlxuICAgICAgICAgIDxpbnB1dCB0eXBlPVwibnVtYmVyXCIgbmFtZT1cInkzXCIgdmFsdWU9e3RoaXMuc3RhdGUueTN9IG9uQ2hhbmdlPXt0aGlzLmhhbmRsZUNoYW5nZX0gbWluPVwiMFwiIG1heD1cIjEwMDBcIiAvPlxuICAgICAgICA8L2xhYmVsPlxuICAgICAgICA8bGFiZWw+XG4gICAgICAgICAgeDQ6XG4gICAgICAgICAgPGlucHV0IHR5cGU9XCJudW1iZXJcIiBuYW1lPVwieDRcIiB2YWx1ZT17dGhpcy5zdGF0ZS54NH0gb25DaGFuZ2U9e3RoaXMuaGFuZGxlQ2hhbmdlfSBtaW49XCIwXCIgbWF4PVwiMTAwMFwiIC8+XG4gICAgICAgIDwvbGFiZWw+XG4gICAgICAgIDxsYWJlbD5cbiAgICAgICAgICB5NDpcbiAgICAgICAgICA8aW5wdXQgdHlwZT1cIm51bWJlclwiIG5hbWU9XCJ5NFwiIHZhbHVlPXt0aGlzLnN0YXRlLnk0fSBvbkNoYW5nZT17dGhpcy5oYW5kbGVDaGFuZ2V9IG1pbj1cIjBcIiBtYXg9XCIxMDAwXCIgLz5cbiAgICAgICAgPC9sYWJlbD5cblxuICAgICAgICA8aW5wdXQgdHlwZT1cInN1Ym1pdFwiIHZhbHVlPVwiU3VibWl0XCIgLz5cbiAgICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICBsYWJlbCB7XG4gICAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgICAgICAgIGNvbG9yOiBibHVlO1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgICBtYXJnaW46IDEwcHg7XG4gICAgICAgIH1cblxuICAgICAgICBpbnB1dFt0eXBlPXN1Ym1pdF0ge1xuICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM0Q0FGNTA7XG4gICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgICBwYWRkaW5nOiAxMHB4IDEwcHg7XG4gICAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgICAgICAgIG1hcmdpbjogNHB4IDJweDtcbiAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICAgIDwvZm9ybT5cbiAgICA8L2Rpdj5cbiAgICApO1xuICB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IENvb3JkaW5hdGVzRm9ybTsiXX0= */\n/*@ sourceURL=/Users/takashimac/Documents/Node.js/FEMForEveryone/femfront/components/Forms.js */")));
-  }
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (CoordinatesForm);
-
-/***/ }),
 
 /***/ "./components/Header.js":
 /*!******************************!*\
@@ -577,17 +215,6 @@ const Layout = props => __jsx("div", {
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "core-js/library/fn/json/stringify");
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/map.js":
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/map.js ***!
@@ -651,17 +278,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-prope
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "core-js/library/fn/object/keys");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/parse-int.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/parse-int */ "core-js/library/fn/parse-int");
 
 /***/ }),
 
@@ -2400,96 +2016,50 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/index.js":
+/***/ "./pages/about.js":
 /*!************************!*\
-  !*** ./pages/index.js ***!
+  !*** ./pages/about.js ***!
   \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return About; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_Canvas__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Canvas */ "./components/Canvas.js");
-/* harmony import */ var _components_Forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Forms */ "./components/Forms.js");
-var _jsxFileName = "/Users/takashimac/Documents/Node.js/FEMForEveryone/femfront/pages/index.js";
+var _jsxFileName = "/Users/takashimac/Documents/Node.js/FEMForEveryone/femfront/pages/about.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-
-
-
-const axios = __webpack_require__(/*! axios */ "axios");
-
-const Index = props => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 7
-  },
-  __self: undefined
-}, __jsx("h1", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 8
-  },
-  __self: undefined
-}, "FEM for Everyone"), __jsx("h2", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 9
-  },
-  __self: undefined
-}, __jsx(_components_Forms__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 9
-  },
-  __self: undefined
-})), __jsx("h2", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 10
-  },
-  __self: undefined
-}, "Coordinates"));
-
-/* harmony default export */ __webpack_exports__["default"] = (Index);
+function About() {
+  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: this
+  }, __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: this
+  }, "This is the about page"));
+}
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
-  !*** multi ./pages/index.js ***!
+  !*** multi ./pages/about.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/takashimac/Documents/Node.js/FEMForEveryone/femfront/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/takashimac/Documents/Node.js/FEMForEveryone/femfront/pages/about.js */"./pages/about.js");
 
-
-/***/ }),
-
-/***/ "axios":
-/*!************************!*\
-  !*** external "axios" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
-
-/***/ }),
-
-/***/ "core-js/library/fn/json/stringify":
-/*!****************************************************!*\
-  !*** external "core-js/library/fn/json/stringify" ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/json/stringify");
 
 /***/ }),
 
@@ -2556,17 +2126,6 @@ module.exports = require("core-js/library/fn/object/get-own-property-descriptor"
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/keys");
-
-/***/ }),
-
-/***/ "core-js/library/fn/parse-int":
-/*!***********************************************!*\
-  !*** external "core-js/library/fn/parse-int" ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/parse-int");
 
 /***/ }),
 
@@ -2681,4 +2240,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=about.js.map
