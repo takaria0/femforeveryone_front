@@ -1,5 +1,7 @@
 const axios = require('axios');
 import Canvas from './Canvas';
+import MeshCanvas from './MeshCanvas';
+import Router from 'next/router'
 
 class CoordinatesForm extends React.Component {
   constructor(props) {
@@ -16,6 +18,8 @@ class CoordinatesForm extends React.Component {
      };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.meshedData;
+    this.redirect = false;
   }
 
 
@@ -26,6 +30,7 @@ class CoordinatesForm extends React.Component {
 }
 
   handleSubmit(event) {
+    event.preventDefault();
     const postData = {
       "geometries": [
         [this.state.x1, this.state.y1],
@@ -35,22 +40,42 @@ class CoordinatesForm extends React.Component {
       ]
     };
 
-    axios.post('http://localhost:4000/geometry', postData)
-      .then(function (res) {
-        const show = JSON.stringify(res.data);
-        return {
-          show: show
-        };
-      })
-      .catch(function (err) {
-        console.log(JSON.stringify(err));
+    // TODO: Add 'Access-Control-Allow-Origin'
+    axios({
+      method: 'post',
+      url: 'http://localhost:4000/triangular',
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
+      withCredentials: false,
+      data: postData,
+    })
+    .then(function (res) {
+      console.log(res);
+      console.log(res.data.results);
+      Router.push({
+        pathname: '/meshed',
+        query: res.data.results,
       });
-    event.preventDefault();
+      console.log('Router passed');
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+  
   }
 
   render() {
+    const redirectChecker = this.redirect;
+    if (redirectChecker === true) {
+      return (
+        <div><MeshCanvas data={this.meshedData} onChange={this.handleChange}/></div>
+      )
+    }
+
     return (
       <div><Canvas data={this.state} onChange={this.handleChange}/>
+      <h2>Coordinates</h2>
       <form onSubmit={this.handleSubmit}>
         <label>
           x1:

@@ -13,6 +13,7 @@ const headerStyle = {
 
 const Layout = props => (
   <div style={layoutStyle}>
+    <h1>FEM for Everyone</h1>
     <div style={headerStyle}>
       <Header />
     </div>
