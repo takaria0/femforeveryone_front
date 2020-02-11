@@ -37,7 +37,8 @@ class CoordinatesForm extends React.Component {
         [this.state.x2, this.state.y2],
         [this.state.x3, this.state.y3],
         [this.state.x4, this.state.y4],
-      ]
+      ],
+      "numberOfElements": 20,
     };
 
     // TODO: Add 'Access-Control-Allow-Origin'
